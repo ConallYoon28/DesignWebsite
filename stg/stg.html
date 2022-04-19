@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<html>
+<style> 
+  body {
+        background-color: rgb(195, 195, 195);
+    }
+
+  * { 
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  
+  .img__wrap {
+    position: relative;
+    height: 225px;
+    width: 225px;
+  }
+  
+  .imgtextlogo {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(145, 145, 145, 0.72);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 2em;
+    font-family: Arial, sans-serif; 
+    text-align: center;
+
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+  }
+  
+  .img__wrap:hover .imgtextlogo {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  display: none;
+}
+
+.sidenav button {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  background-color: #111;
+  color: #818181;
+  display: block;
+}
+
+.sidenav button:hover {
+  color: #f1f1f1;
+}
+
+p {
+  font-size: 40px;
+}
+
+</style>
+
+<head>
+<title>4th Global Goal</title>
+</head>
+<body>
+ 
+<div class="img__wrap">
+    <img class="img__wrap", src="logo.png"/>
+    <button id="logotext", class="imgtextlogo", onclick= "logoClick()"><br>Click to Learn More</button>
+</div>
+<p>The 4th STG</p>
+
+<button id="menu" type="button", onclick= "menuClick()"> <img src="menu.png" height ="100" width="100" /></button>
+
+<canvas id="canvsafr" style="width:100%;max-width:700px"></canvas>
+
+<div id="dropdown" class="sidenav">
+  <button type="button", onclick= "logoClick()">The 4th STG</button>
+</div>
+
+<script>
+  function logoClick() {
+    location.replace("https://www.globalgoals.org/4-quality-education")
+  }
+  
+  function menuClick() {
+    var x = document.getElementById("dropdown");
+  if (x.style.display == "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  }
+
+
+  var xValues = ["Canada", "Africa"];
+  var yValues = [11.6, 6.1];
+  var barColors = ["red", "green"];
+
+  new Chart("canvsafr", {
+    type: "bar",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "Average years of schooling of adults"
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
